@@ -1,7 +1,7 @@
 # encoding: UTF-8
 import os
 import unittest
-
+import io
 import mock
 
 from packtrack.scraping import CorreiosWebsiteScraper
@@ -17,7 +17,8 @@ class CorreiosWebsiteScraperTest(unittest.TestCase):
         self.assertEqual(detalhes, status.detalhes)
 
     def test_should_get_data_from_correios_website(self):
-        example_file = open('%s/tests/correios_website/exemplo_rastreamento_correios1.html' % os.getcwd())
+        example_file = io.open('%s/tests/correios_website/exemplo_rastreamento_correios1.html' % os.getcwd(),
+            encoding='iso-8859-1')
         sample_html = example_file.read()
         example_file.close()
 

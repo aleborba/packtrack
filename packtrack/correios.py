@@ -1,4 +1,6 @@
 # coding: utf-8
+from __future__ import absolute_import
+
 from datetime import datetime
 import re
 
@@ -15,7 +17,7 @@ class EncomendaRepository(object):
         return func(numero, **kwargs)
 
     def _init_scraper(self, backend):
-        from scraping import CorreiosWebsiteScraper, CorreiosRastroService
+        from .scraping import CorreiosWebsiteScraper, CorreiosRastroService
         if backend is None:
             backend = 'www2'
 
@@ -36,8 +38,8 @@ class Encomenda(object):
     def adicionar_status(self, status):
         d = datetime
         self.status.append(status)
-        t_format = self.validar_data(status.data)
-        self.status.sort(lambda x, y: 1 if d.strptime(x.data, t_format) > d.strptime(y.data, t_format) else -1)
+        self.status.sort(
+            key=lambda x: d.strptime(x.data, self.validar_data(x.data)))
 
     def validar_data(self, data):
         if re.match('^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$', data):

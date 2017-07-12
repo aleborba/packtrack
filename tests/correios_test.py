@@ -9,7 +9,7 @@ class EncomendaRepositoryTest(unittest.TestCase):
     def test_should_get_encomenda_by_numero(self):
         encomenda_123 = Status(data='2009-01-28 17:49:00')
         
-        correios_website_scraper_mock = Mock()
+        correios_website_scraper_mock = mock()
         when(correios_website_scraper_mock).get_encomenda_info('123', auth=None).thenReturn(encomenda_123)
         
         repository = EncomendaRepository()

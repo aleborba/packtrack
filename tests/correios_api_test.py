@@ -1,6 +1,6 @@
 import unittest
 
-from mockito import when, Mock
+from mockito import when, mock
 
 from packtrack import Correios
 
@@ -8,7 +8,7 @@ from packtrack import Correios
 class CorreiosTest(unittest.TestCase):
 
     def test_should_use_repository_to_get_encomenda(self):
-        encomenda_repository_mock = Mock()
+        encomenda_repository_mock = mock()
         when(encomenda_repository_mock).get('123', auth=None) \
             .thenReturn('encomenda123')
 
@@ -18,7 +18,7 @@ class CorreiosTest(unittest.TestCase):
 
     def test_service_should_receive_auth(self):
         auth = ('mi', 'mimi')
-        encomenda_repository_mock = Mock()
+        encomenda_repository_mock = mock()
         when(encomenda_repository_mock).get('123', auth=auth) \
             .thenReturn('encomenda123')
 
