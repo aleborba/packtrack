@@ -13,7 +13,6 @@ else:
     install_requires.append('BeautifulSoup >= 3.1.0')
 
 tests_require = [
-    'mockito',
 ]
 
 
@@ -29,5 +28,6 @@ setup(
     url='https://github.com/aleborba/packtrack',
     long_description='API Python para obter informacoes de encomendas. Para mais detalhes veja a documentacao no Github: https://github.com/aleborba/packtrack/blob/master/README.textile',
     install_requires=install_requires,
+    test_suite="tests",
     tests_require=tests_require,
 )

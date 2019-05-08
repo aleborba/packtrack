@@ -5,8 +5,6 @@ try:
 except ImportError:
     from mock import Mock
 
-from mockito import when
-
 from packtrack.correios import Encomenda, Status, EncomendaRepository
 
 class EncomendaRepositoryTest(unittest.TestCase):
@@ -15,8 +13,8 @@ class EncomendaRepositoryTest(unittest.TestCase):
         encomenda_123 = Status(data='2009-01-28 17:49:00')
         
         correios_website_scraper_mock = Mock()
-        when(correios_website_scraper_mock).get_encomenda_info('123', auth=None).thenReturn(encomenda_123)
-        
+        correios_website_scraper_mock.get_encomenda_info.return_value = encomenda_123
+
         repository = EncomendaRepository()
         repository.correios_website_scraper = correios_website_scraper_mock
         encomenda = repository.get('123')
