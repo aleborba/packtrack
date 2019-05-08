@@ -7,6 +7,4 @@ python:
   - "3.6"
   - "3.7-dev"
 
-before_install: pip install -r requirements.txt
-
-script: nosetests
+script: python setup.py test
