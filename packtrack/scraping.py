@@ -88,11 +88,16 @@ class CorreiosWebsiteScraper(object):
             except AttributeError:
                 continue
             for td in tds:
-                content = td.renderContents().decode()
-                content = content.replace('\r', ' ')
-                content = content.replace('\xa0', ' ')
-                content = content.split('<br/>')
-                class_ = td['class'] and td['class'][0]
+                content = td.renderContents()
+                content = content.replace(b'\r', b' ')
+                content = content.replace(b'\xa0', b' ')
+                content = content.replace(b'<br />', b'<br/>')
+                content = content.split(b'<br/>')
+
+                # bs4 return a list, bs3 return a string, join normalize
+                # this behaviour
+                class_ = "".join(td['class'])
+
                 if class_ == 'sroDtEvent':
                     data = '%s %s' % (content[0].strip(), content[1].strip())
                     local = '/'.join(self._text(content[2]).rsplit(' / ', 1)).upper()
