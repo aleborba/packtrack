@@ -1,5 +1,7 @@
 language: python
 
-before_install: pip install -r requirements.txt
+before_install:
+  - python setup.py install
+  - pip install -r requirements-dev.txt
 
 script: nosetests

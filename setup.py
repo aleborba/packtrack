@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='packtrack',
-    version='1.6',
+    version='2.0',
     packages=['packtrack'],
     author='Ale Borba',
     author_email='ale.borba@codingforchange.com',
@@ -13,9 +13,8 @@ setup(
     url='https://github.com/aleborba/packtrack',
     long_description='API Python para obter informacoes de encomendas. Para mais detalhes veja a documentacao no Github: https://github.com/aleborba/packtrack/blob/master/README.textile',
     install_requires=[
-        'BeautifulSoup >= 3.1.0',
-        'requests >= 0.14.2',
-        'beautifulsoup4 >= 4.3.2',
+        'requests',
+        'beautifulsoup4 >= 4.9.3',
         'lxml >= 2.3.5',
         'zeep >= 1.6.0',
     ],
